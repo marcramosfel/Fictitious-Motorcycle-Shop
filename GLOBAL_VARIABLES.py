@@ -1,0 +1,27 @@
+
+
+# URI do web service
+WEB_SERVICE_URI = 'http://127.0.0.1:5000/'
+
+#WEB_SERVICE_URI = 'http://10.20.74.57:5000/'
+
+# Nome da base de dados
+NOME_BASE_DADOS = "trabkivy"
+
+# USER ID
+USER_ID = None
+
+# USER EMAIL
+USER_EMAIL = None
+
+# USER NAME
+USER_NAME = None
+
+# USER PASSWORD
+USER_PASSWORD = None
+
+#USER PHONE
+USER_PHONE = None
+
+# USER IS MASTER 1 TRUE, 0 FALSE
+USER_IS_MASTER = False

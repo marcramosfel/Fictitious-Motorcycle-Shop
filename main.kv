@@ -1,0 +1,665 @@
+<StackLayoutTable>
+    canvas.before:
+        Color:
+            rgba: 0.9,0.3, 0.1, 0.4
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<TextInput@TextInput>:
+    #font_name: '/usr/share/fonts/truetype/freefont/FreeSerifItalic.ttf'
+    foreground_color: 0.9,0.3, 0.1, 1
+
+<FundoBack@BoxLayout>:
+    canvas.before:
+        BorderImage:
+            # BorderImage behaves like the CSS BorderImage
+            border: (10,10,10,10)
+            source: 'images/background.png'
+            pos: self.pos
+            size: self.size
+
+<LabelTexts@Label>:
+    canvas.before:
+        Color:
+            rgba: 0.9,0.3, 0.1, 0.5
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+
+<Icon@Button>:
+    canvas.before:
+        Color:
+            rgba: .8,.8,.8,1
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+    size_hint_x : None
+    width : self.height
+    border: 0,0,0,0
+
+<Button@Button>:
+    background_color: 0.9,0.3, 0.1, 1
+
+<PopEmail>:
+    id: labelpop
+    text:""
+    size_hint: 1,1
+    pos_hint:{"x":0.2, "top":1}
+    font_size:'18dp'
+    color: 1,0,0,1
+    bold:True
+    background_color: 0.9,0.3, 0.1, 1
+
+
+<LoginScreen>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '20dp'
+        LabelTexts:
+            text:'Autenticação Motorizadas'
+            font_size: '55sp'
+            size_hint: 1, .6
+            spacing: '20dp'
+        GridLayout:
+            spacing: '20dp'
+            size_hint: 0.5,0.5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            cols:2
+            TextInput:
+                hint_text : 'Email'
+                font_size: '25sp'
+                size_hint: 0.3,0.5
+                id: utilizador
+                multiline: False
+            Icon:
+                background_normal:'images/icon.png'
+            TextInput:
+                hint_text : 'Password'
+                font_size: '25sp'
+                size_hint: 0.3,0.5
+                id:password
+                password: True
+                multiline: False
+                foreground_color:0.9,0.3, 0.1, 0.5
+            Icon:
+                id:eye
+                on_release: root.change_visible_password()
+                background_normal:'images/eye.png'
+        GridLayout:
+            cols:3
+            padding:'30dp'
+            spacing: '5dp'
+            size_hint: 0.8, 0.5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                text:'Entrar'
+                on_release: root.valida()
+            Button:
+                text:'Registrar'
+                on_release: root.registra()
+            Button:
+                text:'Ver Motos'
+                on_release: root.vai_para_motorizadas()
+
+
+<PaginaInicialNormal>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing:'05dp'
+        LabelTexts:
+            text:'Motorizadas UALG 2021'
+            halign: 'center'
+            valign: 'middle'
+            font_size:'55dp'
+            bold: True
+            size_hint:1, 0.3
+        GridLayout:
+            id: pagina_inicial_normal
+            cols:3
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint:1, 0.7
+            spacing:'08dp'
+            padding:'20dp'
+            LabelTexts:
+                text:'Meus Dados'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            LabelTexts:
+                text:'Motorizadas'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            LabelTexts:
+                text:'Minhas Compras'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            Icon:
+                on_release: root.editar_dados_proprios()
+                background_normal:'images/clientes.png'
+            Icon:
+                on_release: root.vai_para_motorizadas()
+                background_normal:'images/motos.png'
+            Icon:
+                on_release: root.vai_para_compras_normal()
+                background_normal:'images/carrinho.png'
+        Icon:
+            size_hint:0.09, 0.09
+            text: "Logout!"
+            on_release: root.logout()
+
+
+<PaginaInicialMaster>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '09dp'
+        LabelTexts:
+            text:'Motorizadas UALG 2021'
+            halign: 'center'
+            valign: 'middle'
+            font_size:'55dp'
+            bold: True
+            size_hint:1, 0.3
+        GridLayout:
+            id: pagina_inicial_master
+            cols:4
+            spacing:'10dp'
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint:1, 0.4
+            LabelTexts:
+                text:'Clientes'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            LabelTexts:
+                text:'Motorizadas'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            LabelTexts:
+                text:'Compras'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            LabelTexts:
+                text:'Estatisticas'
+                halign: 'center'
+                valign: 'middle'
+                font_size:'25dp'
+                bold: True
+                size_hint:.5, 0.5
+            Icon:
+                on_release: root.vai_para_clientes()
+                background_normal:'images/clientes.png'
+            Icon:
+                on_release: root.vai_para_motorizadas()
+                background_normal:'images/motos.png'
+            Icon:
+                on_release:root.vai_para_compras_master()
+                background_normal:'images/carrinho.png'
+            Icon:
+                on_release:root.vai_para_estatisticas()
+                background_normal:'images/estatisticas.png'
+        Icon:
+            size_hint:0.09, 0.09
+            text: "Logout!"
+            on_release: root.logout()
+
+
+<ClienteMaster>:
+    FundoBack:
+        id : clientes_sem_widget
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '20dp'
+        orientation:'vertical'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            size_hint: 1, 0.3
+            text:'Clientes'
+            font_size:'50sp'
+        BoxLayout:
+            id: botoes_clientes
+            size_hint:1,0.2
+            orientation:'horizontal'
+            Button:
+                text:'Ver Todos'
+                on_release: root.ver_todos_clientes()
+            Button:
+                text:'Ver Cliente Especifico'
+                on_release: root.ver_cliente_especifico()
+            Button:
+                text:'Inserir Novo Cliente'
+                on_release: root.inserir_novo_cliente()
+            Button:
+                text:'Alterar Dados'
+                on_release: root.alterar_dados()
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                id:grid_informacao
+                cols: 0
+                padding: 20
+                spacing: 5
+                size_hint_y:None
+                size_hint_x:None
+                size:(root.width, 500)
+                height: self.minimum_height
+
+<ClienteNormal>:
+    FundoBack:
+        id : clientes_sem_widget
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '20dp'
+        orientation:'vertical'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            size_hint: 1, 0.3
+            text:'Dados'
+            font_size:'50sp'
+        GridLayout:
+            cols:2
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: '2dp'
+            LabelTexts:
+                text: "Nome"
+            TextInput:
+                id: nome_cliente
+                font_size: '20sp'
+                size_hint: 1, 1
+                multiline: False
+            LabelTexts:
+                text: "Telefone:"
+            TextInput:
+                id: telefone_cliente
+                font_size: '20sp'
+                size_hint: 1, 1
+                multiline: False
+            LabelTexts:
+                text: "Email:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1,1
+                id: email_cliente
+                multiline: False
+            LabelTexts:
+                text: "Password:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1, 1
+                id: password_cliente
+                password: True
+                multiline: False
+            LabelTexts:
+                text: "Confirme a Password:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1, 1
+                id: confirmar_password_cliente
+                password: True
+                multiline: False
+            LabelTexts:
+                text: "Utilizador Master?"
+            CheckBox:
+                id: check_master_cliente
+            LabelTexts:
+                text: "Digite o código master"
+            TextInput:
+                id: codigomaster
+                font_size: '20sp'
+                size_hint: 1, 1
+                password: True
+                multiline: False
+                disabled: True
+        GridLayout:
+            cols:2
+            size_hint: 0.8, 0.5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                text: "carregar"
+                on_release: root.carregar()
+            Button:
+                text: "salvar"
+                on_release: root.salvar()
+
+<ComprasMaster>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing:'05dp'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            text:'Todas as Compras'
+            halign: 'center'
+            valign: 'middle'
+            font_size:'55dp'
+            bold: True
+            size_hint:1, 0.3
+        GridLayout:
+            id: todas_compras
+            cols:3
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint:1, 0.7
+            spacing:'08dp'
+            padding:'20dp'
+            Button:
+                text:"Mostrar Todas as Compras"
+                on_release:root.mostra_compras_master()
+            Button:
+                text:"Mostrar Minhas Compras"
+                on_release:root.mostra_compras()
+            Button:
+                text:"Comprar"
+                on_release:root.comprar_master()
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                spacing:"5dp"
+                canvas.before:
+                    Color:
+                        rgba: 0.9,0.3, 0.1, 0.5
+                    Rectangle:
+                        # self here refers to the widget i.e BoxLayout
+                        pos: self.pos
+                        size: self.size
+                id:scroll_compras_master
+                cols:0
+                padding: 20
+                spacing: 20
+                size_hint_y:None
+                size_hint_x:None
+                size:(root.width, 2000)
+                height: self.minimum_height
+
+
+<ComprasNormal>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing:'05dp'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            text:'Minhas Compras'
+            halign: 'center'
+            valign: 'middle'
+            font_size:'55dp'
+            bold: True
+            size_hint:1, 0.5
+        GridLayout:
+            id: minhas_compras
+            cols:3
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint:1, .5
+            spacing:'08dp'
+            padding:'20dp'
+            Button:
+                size_hint: 1, .2
+                text:"Mostrar"
+                on_release:root.mostra_compras()
+            Button:
+                size_hint: 1, .2
+                text:"Comprar"
+                on_release:root.comprar_normal()
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                spacing:"5dp"
+                canvas.before:
+                    Color:
+                        rgba: 0.9,0.3, 0.1, 0.5
+                    Rectangle:
+                        # self here refers to the widget i.e BoxLayout
+                        pos: self.pos
+                        size: self.size
+                id:scroll_compras
+                cols:0
+                padding: 20
+                spacing: 20
+                size_hint_y:None
+                size_hint_x:None
+                size:(root.width, root.height)
+                height: self.minimum_height
+
+
+
+
+#                row_default_height:100
+#                row_force_default:True
+#                Label:
+#                    size_hint_y: None
+#                    height: self.texture_size[1]
+#                    text_size: self.width, None
+#                    padding: 10, 10
+#                    text:
+#                        'really some amazing text\n' * 100
+#                Label:
+#                    size_hint_y: None
+#                    height: self.texture_size[1]
+#                    text_size: self.width, None
+#                    padding: 10, 10
+#                    text:
+#                        'really some amazing text2\n' * 100
+
+
+
+
+<Registrar>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '20dp'
+        size_hint: 1, 1
+        halign: 'middle'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            text:'Registro Novo Utilizador'
+            font_size: '35sp'
+            size_hint: .66, .35
+            spacing: '20dp'
+            pos_hint: {'center_x': .5, 'center_y': .5}
+        GridLayout:
+            cols: 2
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: '2dp'
+            LabelTexts:
+                text: "Digite o Nome:"
+            TextInput:
+                id: criar_nome
+                font_size: '20sp'
+                size_hint: 1, 1
+                multiline: False
+            LabelTexts:
+                text: "Digite o Telefone:"
+            TextInput:
+                id: criar_telefone
+                font_size: '20sp'
+                size_hint: 1, 1
+                multiline: False
+            LabelTexts:
+                text: "Digite o Nif:"
+            TextInput:
+                id: criar_nif
+                font_size: '20sp'
+                size_hint: 1, 1
+                multiline: False
+            LabelTexts:
+                text: "Email:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1,1
+                id: criar_email
+                multiline: False
+            LabelTexts:
+                text: "Password:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1, 1
+                id: criar_password
+                password: True
+                multiline: False
+            LabelTexts:
+                text: "Confirme a Password:"
+            TextInput:
+                font_size: '20sp'
+                size_hint: 1, 1
+                id: confirmar_password
+                password: True
+                multiline: False
+            LabelTexts:
+                text: "Utilizador Master?"
+            CheckBox:
+                id: check_master
+            LabelTexts:
+                text: "Digite o código master"
+            TextInput:
+                id: codigomaster
+                font_size: '20sp'
+                size_hint: 1, 1
+                password: True
+                multiline: False
+                disabled: True
+        GridLayout:
+            cols:1
+            size_hint: 0.5, 0.3
+            spacing:'20dp'
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            Button:
+                text: "Criar!"
+                on_release: root.criar_utilizador()
+
+
+
+
+<Motorizadas>:
+    FundoBack:
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '10dp'
+        BoxLayout:
+            size_hint: 1, None
+            orintetation: 'horizontal'
+            pos_hint: {"top" : 0}
+            Button:
+                size_hint:0.1, 0.3
+                text: "<<"
+                background_color: 0.9,0.3, 0.1, 1
+                on_release: root.atras()
+            Search:
+                name: 'search'
+                font_size: self.height -15
+                size_hint: 1,0.3
+                multiline:False
+            Button:
+                background_color: 0.9,0.3, 0.1, 1
+                text: "Pesquisar"
+                font_size: self.height -15
+                size_hint: 0.15,0.3
+                on_release: root.search()
+        GridLayout:
+            name: 'gridLayout_list'
+            cols:2
+            ScrollView:
+                name: 'scroll'
+                StackLayoutTable:
+                    name: 'table'
+                    size_hint: 1, None
+                    height: self.minimum_height
+            BoxLayout:
+                size_hint: 0.5, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.9,0.3, 0.1, 0.4
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                ImageMoto:
+                    #name:"image_photo"
+                    size_hint: 1,1
+
+<Estatisticas>:
+    FundoBack:
+        id:estatisticas
+        orientation:'vertical'
+        padding:'20dp'
+        spacing: '20dp'
+        Button:
+            size_hint:0.1, 0.1
+            text: "<<"
+            on_release: root.atras()
+        LabelTexts:
+            size_hint:1, .2
+            text:"Estatísticas"
+        GridLayout:
+            cols:3
+            size_hint:1, .2
+            Button:
+                text:"Ver Estatisticas Geral"
+                on_release:root.mostrar_geral()
+            Button:
+                text:"Ver Estatisticas por Data"
+                on_release:root.mostrar_popup_data()
+            Button:
+                text:"Ver Estatisticas por Cliente"
+                on_release: root.mostrar_popup_cliente()
+        GridLayout:
+            cols:0
+            canvas.before:
+                Color:
+                    rgba: 0.9,0.3, 0.1, 0.4
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+#            orientation: 'vertical'
+            id:box_estatisticas
+
+<PopDatePicker>:
+    MDRaisedButton:
+        text: "Open Date Picker"
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        on_release: root.show_date_picker()
+
+    MDLabel:
+        id: date_label
+        text: ""
+        pos_hint: {'center_x': .9, 'center_y': .1}
+
+
